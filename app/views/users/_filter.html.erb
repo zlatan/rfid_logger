@@ -1,0 +1,17 @@
+<h2>Филтър</h2>
+
+<%= form_tag request.original_url, method: :get do %>
+
+<p>
+   <%= date_select :event_start_date, nil %>
+   &rarr;
+   <%= date_select :event_end_date, nil %>
+</p>
+
+
+<p>
+<%= submit_tag "Избери" %>
+</p>
+
+
+<%-end%>

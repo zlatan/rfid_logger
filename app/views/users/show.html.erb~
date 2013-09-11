@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Име:</strong>
+  <%= @user.name %>
+</p>
+
+<p>
+  <strong>Код:</strong>
+  <%= @user.uid %>
+</p>
+
+<p>
+  <strong>Rfid:</strong>
+  <%= @user.rfid %>
+</p>
+
+
+<%= render "filter" %>
+
+
+
+<h1>Събития <%= if params[:event_start_date].nil? then sdate = Date.today else sdate = Date.new(params[:event_start_date]["(1i)"].to_i,params[:event_start_date]["(2i)"].to_i,params[:event_start_date]["(3i)"].to_i) end %> &rarr;
+<%=if params[:event_end_date].nil? then edate = Date.today else edate = Date.new(params[:event_end_date]["(1i)"].to_i,params[:event_end_date]["(2i)"].to_i,params[:event_end_date]["(3i)"].to_i) end %> </h1>
+
+<% @user.events.where('created_at > ? AND created_at < ?', sdate.beginning_of_day, edate.end_of_day ).each do |person| %>
+  Регистрация: <%= person.created_at.localtime %><br/>
+<% end %>
+
+
+<%= link_to 'Редакция', edit_user_path(@user) %> |
+<%= link_to 'Потребители', users_path %> |
+<%= link_to 'Справка', :controller => :reports %>
+

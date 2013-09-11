@@ -1,0 +1,36 @@
+<h1>Справка <%= if params[:event_start_date].nil? then sdate = Date.today else sdate = Date.new(params[:event_start_date]["(1i)"].to_i,params[:event_start_date]["(2i)"].to_i,params[:event_start_date]["(3i)"].to_i) end %> </h1>
+
+
+<p style="text-align: right"><%=link_to image_tag("PDF.png", :boarder => '0', :height => '64', :title => 'Разгледай PDF'),  if params[:event_start_date].nil? then request.original_url  << "?format=pdf" else  request.original_url << "&format=pdf" else end %> </p> 
+
+
+<%= render "filter" %>
+
+
+
+
+<table id="reports" class="display">
+  <thead>
+    <tr>
+      <th>Име</th>
+      <th>Код</th>
+      <th>Rfid</th>
+      <th>Вход</th>
+      <th>Изход</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= link_to user.name, user %></td>
+        <td><%= user.uid %></td>
+        <td><%= user.rfid %></td> 
+        <td><%= user.entrance(sdate) %></td>
+        <td><%= user.exit(sdate) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
