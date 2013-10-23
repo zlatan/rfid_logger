@@ -1,8 +1,4 @@
 <res>
 <%=p @res%>
-</res>
-
-<name>
 <%=p @name%>
-</name>
-
+</res>

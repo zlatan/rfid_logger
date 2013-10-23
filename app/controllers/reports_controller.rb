@@ -1,5 +1,7 @@
 class ReportsController < ApplicationController
 
+http_basic_authenticate_with name: "kili", password: "kili12"
+
 	  def index
           @users = User.all
 	  @users = User.where('uid like? ', "#{params[:uid]}%" ) if params[:uid]
@@ -20,7 +22,4 @@ class ReportsController < ApplicationController
 	  	end
           end
 
-	
 end
-
-

@@ -1,6 +1,7 @@
 class EventsController < ApplicationController
 
 	def index
+        @res = 0
 	user = User.find_by_rfid(params[:rfid])
 		if user.nil?	
 			Unmapped.create(rfid: params[:rfid])
@@ -8,7 +9,6 @@ class EventsController < ApplicationController
 	   	else 
 			Event.create(user_id: user.id)
 			@res = 137
-			@name = user.name
 		end
 	end
 
