@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Име:</strong>
+  <%= @student.name %>
+</p>
+
+<p>
+  <strong>Код:</strong>
+  <%= @student.klas %>
+</p>
+
+<p>
+  <strong>Rfid:</strong>
+  <%= @student.qrcode %>
+</p>
+
+
+<%= link_to 'Редакция', edit_student_path(@student) %> |
+<%= link_to 'Потребители', students_path %> 
