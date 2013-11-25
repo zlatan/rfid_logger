@@ -1,6 +1,6 @@
 class ReportsController < ApplicationController
 
-http_basic_authenticate_with name: "kili", password: "kili12"
+http_basic_authenticate_with name: "user", password: "pass"
 
 	  def index
           @users = User.all
