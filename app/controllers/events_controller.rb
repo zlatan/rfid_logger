@@ -1,15 +1,15 @@
 class EventsController < ApplicationController
 
 	def index
-	
-	student = Student.find_by_rfid(params[:rfid])
-                if student.nil?
+
+        user = User.find_by_rfid(params[:rfid])
+                if user.nil?        
                         Unmapped.create(rfid: params[:rfid])
                         @res = 0
-                else
-                        Event.create(user_id: student.id)
+                 else
+                        Event.create(user_id: user.id)
                         @res = 137
-                        @name = student.name
+                        @name = user.name
                 end
         end
 	
